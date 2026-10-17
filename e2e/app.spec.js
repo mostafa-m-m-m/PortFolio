@@ -7,7 +7,7 @@ test.describe('page content', () => {
     await page.goto('/')
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('I build fast, accessible, bilingual web apps.')
     await expect(page).toHaveTitle('Mostafa Mahmoud | Front-End Developer')
-    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', '/og.png')
+    await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/og\.png$/)
     const jsonLd = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent())
     expect(jsonLd).toMatchObject({ '@type': 'Person', name: 'Mostafa Mahmoud', jobTitle: 'Front-End Developer' })
   })

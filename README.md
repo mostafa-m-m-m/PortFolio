@@ -2,7 +2,7 @@
 
 My portfolio: four tested projects, my experience and how to reach me. Bilingual (English and Arabic with full RTL), light and dark, and built to score 100 on Lighthouse accessibility.
 
-> **Live site:** _add your Vercel link here after deploying_
+> **Live site:** https://mostafa-portfolio-ruddy.vercel.app
 
 ![Hero](docs/screenshots/hero.png)
 
