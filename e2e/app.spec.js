@@ -38,11 +38,17 @@ test.describe('page content', () => {
     }
   })
 
-  test('a Live demo button appears only for deployed projects', async ({ page }) => {
+  test('every project has a Live demo button that points to its deployment', async ({ page }) => {
     await page.goto('/')
     const live = page.getByRole('link', { name: /^Live demo:/ })
-    await expect(live).toHaveCount(1)
-    await expect(live).toHaveAttribute('href', 'https://coffee-ten-khaki.vercel.app')
+    await expect(live).toHaveCount(4)
+    const hrefs = await live.evaluateAll((els) => els.map((e) => e.href))
+    expect(hrefs).toEqual([
+      'https://coffee-ten-khaki.vercel.app/',
+      'https://masar-car-rental.vercel.app/',
+      'https://forma-fitness-six.vercel.app/',
+      'https://spotify-web-player-jet.vercel.app/',
+    ])
   })
 
   test('the CV button stays hidden until a CV file is configured', async ({ page }) => {

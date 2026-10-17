@@ -38,7 +38,7 @@ export const projects = [
       f('Lighthouse accessibility 100 on every page, both languages', 'إمكانية الوصول 100 في كل الصفحات وباللغتين'),
     ],
     stack: ['React 19', 'Vite', 'React Router', 'CSS', 'Vitest', 'Playwright'],
-    live: null,
+    live: 'https://masar-car-rental.vercel.app',
     code: 'https://github.com/mostafa-m-m-m/cars-website',
   },
   {
@@ -56,7 +56,7 @@ export const projects = [
       f('Lighthouse mobile 98 / 100 / 100 / 100', 'Lighthouse على الموبايل 98 / 100 / 100 / 100'),
     ],
     stack: ['React 19', 'Vite', 'React Router', 'CSS', 'Vitest', 'Playwright'],
-    live: null,
+    live: 'https://forma-fitness-six.vercel.app',
     code: 'https://github.com/mostafa-m-m-m/vawuLens--website',
   },
   {
@@ -74,7 +74,7 @@ export const projects = [
       f('31 unit tests; Lighthouse desktop 97 / 100 / 100 / 100', '31 اختبار وحدة؛ Lighthouse على الديسكتوب 97 / 100 / 100 / 100'),
     ],
     stack: ['React 19', 'Vite', 'React Router', 'iTunes API', 'Vitest', 'Playwright'],
-    live: null,
+    live: 'https://spotify-web-player-jet.vercel.app',
     code: 'https://github.com/mostafa-m-m-m/Spotify-page',
   },
 ]
