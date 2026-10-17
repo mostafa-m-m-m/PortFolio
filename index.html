@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7fb" />
+    <title>Mostafa Mahmoud | Front-End Developer</title>
+    <meta name="description" content="Front-end developer in Egypt building fast, accessible, bilingual (Arabic and English) web apps with React, Next.js and TypeScript." />
+    <meta property="og:title" content="Mostafa Mahmoud | Front-End Developer" />
+    <meta property="og:description" content="Fast, accessible, bilingual web apps. React, Next.js, TypeScript, Tailwind." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mostafa Mahmoud",
+        "jobTitle": "Front-End Developer",
+        "email": "mailto:mostafa.mahmoud.mohamed00@gmail.com",
+        "address": { "@type": "PostalAddress", "addressCountry": "EG", "addressLocality": "Cairo" },
+        "sameAs": [
+          "https://www.linkedin.com/in/mostafa-mahmoud-mohamed-260158209/",
+          "https://github.com/mostafa-m-m-m"
+        ]
+      }
+    </script>
+    <script>
+      // Apply theme, language and direction before the first paint to avoid a flash.
+      try {
+        var read = function (key) { try { return JSON.parse(localStorage.getItem(key)) } catch (e) { return null } }
+        var lang = read('mm.lang') || (navigator.language && navigator.language.indexOf('ar') === 0 ? 'ar' : 'en')
+        var root = document.documentElement
+        root.lang = lang
+        root.dir = lang === 'ar' ? 'rtl' : 'ltr'
+        root.dataset.theme = read('mm.theme') || 'light'
+      } catch (e) {
+        document.documentElement.dataset.theme = 'light'
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

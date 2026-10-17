@@ -1,35 +1,95 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import 'tailwindcss';
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Theme tokens. Light is the default; dark overrides them. Colors are checked for WCAG AA contrast. */
+:root,
+[data-theme='light'] {
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #eceffa;
+  --border: #d3d9ee;
+  --fg: #0f1530;
+  --muted: #475077;
+  --accent: #2f5bea;
+  --accent-strong: #2447c4;
+  --on-accent: #ffffff;
+  --shadow: 0 10px 30px rgb(15 21 48 / 0.08);
+  color-scheme: light;
 }
-a{
-  text-decoration: none;
-}
-ul{
-  list-style: none;
-}
-body{
-  font-family: 'Roboto', sans-serif;
-  background: #f1f1f1;
-
-
-
-
-}
-.container{
-  max-width: 1240px;
-  
-  margin: 0 auto;
-}
-
-:root{
-  --main-color:#f1f1f1;
-
-  --txt-main-color:#262550;
-  --txt-second-color:#6b73e1;
-  --txt-prg:#070000;
+[data-theme='dark'] {
+  --bg: #0b1020;
+  --surface: #131a33;
+  --surface-2: #1b2547;
+  --border: #2b3668;
+  --fg: #eef1ff;
+  --muted: #aab3d6;
+  --accent: #8aa6ff;
+  --accent-strong: #a9bdff;
+  --on-accent: #0b1020;
+  --shadow: 0 10px 30px rgb(0 0 0 / 0.45);
+  color-scheme: dark;
 }
 
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-on-accent: var(--on-accent);
+  --font-sans: 'Inter Variable', 'Cairo Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --shadow-card: var(--shadow);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  main:focus {
+    outline: none;
+  }
+}
+
+/* Sections fade up as they enter the viewport; with reduced motion or no JS they are simply visible. */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

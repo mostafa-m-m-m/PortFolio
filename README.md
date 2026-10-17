@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Mostafa Mahmoud: Front-End Developer Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+My portfolio: four tested projects, my experience and how to reach me. Bilingual (English and Arabic with full RTL), light and dark, and built to score 100 on Lighthouse accessibility.
 
-## Available Scripts
+> **Live site:** _add your Vercel link here after deploying_
 
-In the project directory, you can run:
+![Hero](docs/screenshots/hero.png)
 
-### `npm start`
+| Selected work | Arabic, dark theme | Phone |
+| --- | --- | --- |
+| ![Work](docs/screenshots/work.png) | ![Arabic dark](docs/screenshots/arabic-dark.png) | ![Mobile](docs/screenshots/mobile.png) |
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## What is on the page
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Hero**, **About**, **Skills** (grouped), **Selected work**, **Experience**, **Contact**.
+- **Four projects**, each with a screenshot, what it proves, the numbers that back it up (tests, Lighthouse), its stack, and Source code and Live demo buttons. A Live demo button only appears once a project is deployed.
+- **Arabic and English** with real RTL (logical CSS properties, mirrored layout), and **light and dark** themes. Both are remembered and applied before first paint, so there is no flash.
+- Accessible by default: skip link, current-section highlighting in the nav, labelled controls, visible focus, reduced motion respected, and accessible names that contain the visible text.
+- SEO: per-page title and description, Open Graph image, JSON-LD `Person`, `robots.txt`.
 
-### `npm test`
+## Tech
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React 19 · Vite · Tailwind CSS 4 · self-hosted fonts (Inter, Cairo) · Vitest · Playwright · axe-core · ESLint 9.
 
-### `npm run build`
+All content is data: personal details in `src/data/profile.js`, projects in `src/data/projects.js` (every string is `{ en, ar }`), interface text in `src/i18n`.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Edit it
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Contact details and links:** `src/data/profile.js`.
+- **CV button:** put the PDF in `public/` and set `cvUrl` in `profile.js`; the button stays hidden until then.
+- **Add a live link to a project:** set `live` in `src/data/projects.js`.
+- **Add a project:** add an entry there and a screenshot in `src/assets/projects/` (a test checks the image exists).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Run it
 
-### `npm run eject`
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build
+npm run preview
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tests
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run lint
+npm test                 # unit tests
+npx playwright install   # once
+npm run test:e2e         # end-to-end and accessibility on Chromium, Firefox, WebKit and a phone viewport
+npm run test:visual      # screenshot regression (Chromium; baselines are per platform)
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Unit (8):** English and Arabic have identical keys and placeholders, every key used in the code exists and none is unused, every project string exists in both languages, links and contact details are well formed, every screenshot exists.
+- **End-to-end and accessibility (100 runs):** content and metadata, project order, links (source, live, mailto, tel, LinkedIn, GitHub) with safe `rel`, in-page navigation with current-section marking, mobile menu and Escape, skip link, language and theme persistence, corrupted storage, no horizontal scroll, and **axe-core in English and Arabic, light and dark**, plus the open mobile menu and a keyboard focus check.
+- Skipped on WebKit with a stated reason: Safari does not Tab to links by default.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Quality numbers
 
-## Learn More
+Lighthouse on the production build:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+| | Performance | Accessibility | Best practices | SEO |
+| --- | --- | --- | --- | --- |
+| Desktop | 100 | 100 | 100 | 100 |
+| Mobile (simulated slow 4G) | 98 | 100 | 100 | 100 |
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## History
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The first version was a Create React App page with placeholder copy (`Lorem ipsum`), skills that listed the wrong language, a broken email link, and project links on a host that was unreachable from Egypt without a VPN. The original is in the git history.
