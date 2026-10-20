@@ -1,11 +1,11 @@
 import { expect, test } from '@playwright/test'
 
-const SECTIONS = ['about', 'skills', 'work', 'experience', 'contact']
+const SECTIONS = ['work', 'experience', 'about', 'skills', 'contact']
 
 test.describe('page content', () => {
   test('shows the hero, a title and social metadata', async ({ page }) => {
     await page.goto('/')
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('I build fast, accessible, bilingual web apps.')
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('I build production web apps with React and Next.js.')
     await expect(page).toHaveTitle('Mostafa Mahmoud | Front-End Developer')
     await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', /\/og\.png$/)
     const jsonLd = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent())
@@ -15,7 +15,7 @@ test.describe('page content', () => {
   test('has every section with one heading each', async ({ page }) => {
     await page.goto('/')
     for (const id of SECTIONS) await expect(page.locator(`#${id}`)).toBeVisible()
-    await expect(page.getByRole('heading', { level: 2 })).toHaveText(['About', 'Skills', 'Selected work', 'Experience', 'Contact'])
+    await expect(page.getByRole('heading', { level: 2 })).toHaveText(['Projects', 'Experience', 'About', 'Skills', 'Contact'])
   })
 
   test('lists the four projects in order, each with a screenshot and tests highlighted', async ({ page }) => {
@@ -56,7 +56,7 @@ test.describe('page content', () => {
     await expect(page.getByRole('link', { name: 'Download CV' })).toHaveCount(0)
   })
 
-  test('shows the three entries of the experience timeline, with the company link', async ({ page }) => {
+  test('shows the two jobs in the experience timeline, with the company link', async ({ page }) => {
     await page.goto('/')
     const exp = page.locator('#experience')
     await expect(exp.getByRole('heading', { name: 'Front-End Developer', exact: true })).toBeVisible()
@@ -66,8 +66,7 @@ test.describe('page content', () => {
     await expect(exp.getByText('Oct 2024 – Sep 2026')).toBeVisible()
     await expect(exp.getByRole('heading', { name: 'Junior Front-End Developer' })).toBeVisible()
     await expect(exp.getByText('Nasr City, Cairo · Feb 2023 – Mar 2024')).toBeVisible()
-    await expect(exp.getByRole('heading', { name: 'Independent projects' })).toBeVisible()
-    await expect(exp.getByText(/Over 600 commits/)).toBeVisible()
+    await expect(exp.getByText(/600\+ commits/)).toBeVisible()
   })
 
   test('contact links are real mailto, tel, LinkedIn and GitHub links', async ({ page }) => {
@@ -100,7 +99,7 @@ test.describe('navigation', () => {
   test('nav links jump to their sections and mark the current one', async ({ page, isMobile }) => {
     test.skip(isMobile, 'covered by the mobile menu test')
     await page.goto('/')
-    for (const [label, id] of [['Skills', 'skills'], ['Work', 'work'], ['Experience', 'experience'], ['Contact', 'contact']]) {
+    for (const [label, id] of [['Projects', 'work'], ['Experience', 'experience'], ['About', 'about'], ['Skills', 'skills'], ['Contact', 'contact']]) {
       await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: label }).click()
       await expect(page).toHaveURL(new RegExp(`#${id}$`))
       await expect(page.locator(`#${id}`)).toBeInViewport()
@@ -128,7 +127,7 @@ test.describe('navigation', () => {
     await page.keyboard.press('Escape')
     await expect(page.getByRole('button', { name: 'Open menu' })).toBeVisible()
     await page.getByRole('button', { name: 'Open menu' }).click()
-    await page.getByRole('link', { name: 'Work', exact: true }).click()
+    await page.getByRole('link', { name: 'Projects', exact: true }).click()
     await expect(page).toHaveURL(/#work$/)
     await expect(page.getByRole('button', { name: 'Open menu' })).toHaveAttribute('aria-expanded', 'false')
   })
@@ -149,7 +148,7 @@ test.describe('settings', () => {
     await page.getByRole('button', { name: /^Language/ }).click()
     await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')
     await expect(page.locator('html')).toHaveAttribute('lang', 'ar')
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('أبني تطبيقات ويب سريعة ومتاحة للجميع وبلغتين.')
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('أبني تطبيقات ويب للإنتاج بـ React وNext.js.')
     await expect(page.locator('#work article h3').first()).toHaveText('إمبر روستري')
     await page.reload()
     await expect(page.locator('html')).toHaveAttribute('dir', 'rtl')

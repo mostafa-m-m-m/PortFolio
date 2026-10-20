@@ -3,7 +3,7 @@ import { LuLanguages, LuMenu, LuMoon, LuSun, LuX } from 'react-icons/lu'
 import { useSettings } from '../SettingsContext'
 import { useActiveSection } from '../hooks/useActiveSection'
 
-const SECTIONS = ['about', 'skills', 'work', 'experience', 'contact']
+const SECTIONS = ['work', 'experience', 'about', 'skills', 'contact']
 
 export default function Header() {
   const { t, lang, setLang, theme, setTheme } = useSettings()

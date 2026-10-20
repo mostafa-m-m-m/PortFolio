@@ -31,8 +31,8 @@ export function Hero() {
   const ref = useReveal()
   const featured = projects.find((p) => p.featured)
   const points = [
+    [LuBadgeCheck, 'hero.point.prod'],
     [LuLanguages, 'hero.point.rtl'],
-    [LuBadgeCheck, 'hero.point.a11y'],
     [LuTestTubes, 'hero.point.tests'],
   ]
   return (
@@ -198,10 +198,9 @@ export function Experience() {
       role: 'exp.vc.role',
       company: profile.company,
       dates: 'exp.vc.dates',
-      bullets: ['exp.vc.b1', 'exp.vc.b2', 'exp.vc.b3', 'exp.vc.b4', 'exp.vc.b5'],
+      bullets: ['exp.vc.b1', 'exp.vc.b2', 'exp.vc.b3', 'exp.vc.b4'],
     },
     { role: 'exp.role', place: 'exp.place', dates: 'exp.dates', bullets: ['exp.b1', 'exp.b2'] },
-    { role: 'exp.projects.role', place: 'exp.projects.place', dates: 'exp.projects.dates', bullets: ['exp.projects.b1', 'exp.projects.b2'] },
   ]
   return (
     <Section id="experience" title={t('exp.title')}>

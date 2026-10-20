@@ -15,10 +15,10 @@ function Page() {
       <Header />
       <main id="main" tabIndex={-1}>
         <Hero />
-        <About />
-        <Skills />
         <Work />
         <Experience />
+        <About />
+        <Skills />
         <Contact />
       </main>
       <Footer />
