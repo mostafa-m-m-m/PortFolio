@@ -6,6 +6,7 @@ export const profile = {
   phoneTel: '+201125121424',
   linkedin: 'https://www.linkedin.com/in/mostafa-mahmoud-mohamed-260158209/',
   github: 'https://github.com/mostafa-m-m-m',
+  company: { name: 'Vconnct', url: 'https://www.vconnct.me/en/home' },
   // Put the PDF in /public and set this to '/Mostafa-Mahmoud-CV.pdf' to show the "Download CV" button.
   cvUrl: null,
 }
@@ -17,7 +18,7 @@ export const skills = [
   },
   {
     id: 'frameworks',
-    items: ['React', 'Next.js', 'React Router', 'Redux', 'Tailwind CSS', 'Bootstrap', 'jQuery'],
+    items: ['React', 'Next.js', 'React Router', 'Redux Toolkit', 'React Hook Form', 'Zod', 'Tailwind CSS', 'MUI', 'Bootstrap', 'jQuery'],
   },
   {
     id: 'quality',
@@ -25,6 +26,6 @@ export const skills = [
   },
   {
     id: 'other',
-    items: ['WordPress', 'Prisma', 'PostgreSQL', 'Responsive design', 'Accessibility (WCAG)', 'Arabic RTL and i18n'],
+    items: ['Supabase', 'TanStack Query', 'Prisma', 'PostgreSQL', 'WordPress', 'Responsive design', 'Accessibility (WCAG)', 'i18n and Arabic RTL'],
   },
 ]

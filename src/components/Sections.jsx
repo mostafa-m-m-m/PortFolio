@@ -194,18 +194,31 @@ export function Work() {
 export function Experience() {
   const { t } = useSettings()
   const jobs = [
+    {
+      role: 'exp.vc.role',
+      company: profile.company,
+      dates: 'exp.vc.dates',
+      bullets: ['exp.vc.b1', 'exp.vc.b2', 'exp.vc.b3', 'exp.vc.b4', 'exp.vc.b5'],
+    },
     { role: 'exp.role', place: 'exp.place', dates: 'exp.dates', bullets: ['exp.b1', 'exp.b2'] },
     { role: 'exp.projects.role', place: 'exp.projects.place', dates: 'exp.projects.dates', bullets: ['exp.projects.b1', 'exp.projects.b2'] },
   ]
   return (
     <Section id="experience" title={t('exp.title')}>
-      <ol className="space-y-6 border-s-2 border-border ps-6">
+      <ol className="space-y-8 border-s-2 border-border ps-6">
         {jobs.map((job) => (
           <li key={job.role} className="relative">
             <span className="absolute -start-[1.95rem] top-2 size-3 rounded-full bg-accent" aria-hidden="true" />
             <h3 className="text-xl font-bold">{t(job.role)}</h3>
             <p className="text-sm text-muted">
-              {t(job.place)} · {t(job.dates)}
+              {job.company ? (
+                <a href={job.company.url} target="_blank" rel="noreferrer" className="font-semibold text-accent-strong underline-offset-4 hover:underline">
+                  {job.company.name}
+                </a>
+              ) : (
+                t(job.place)
+              )}{' '}
+              · {t(job.dates)}
             </p>
             <ul className="mt-3 list-disc space-y-1.5 ps-5 text-muted marker:text-accent-strong">
               {job.bullets.map((b) => <li key={b}>{t(b)}</li>)}

@@ -56,11 +56,18 @@ test.describe('page content', () => {
     await expect(page.getByRole('link', { name: 'Download CV' })).toHaveCount(0)
   })
 
-  test('shows both roles in the experience timeline', async ({ page }) => {
+  test('shows the three entries of the experience timeline, with the company link', async ({ page }) => {
     await page.goto('/')
-    await expect(page.getByRole('heading', { name: 'Junior Front-End Developer' })).toBeVisible()
-    await expect(page.getByText('Nasr City, Cairo · Feb 2023 – Mar 2024')).toBeVisible()
-    await expect(page.getByRole('heading', { name: 'Independent projects' })).toBeVisible()
+    const exp = page.locator('#experience')
+    await expect(exp.getByRole('heading', { name: 'Front-End Developer', exact: true })).toBeVisible()
+    const company = exp.getByRole('link', { name: 'Vconnct' })
+    await expect(company).toHaveAttribute('href', 'https://www.vconnct.me/en/home')
+    await expect(company).toHaveAttribute('rel', /noreferrer/)
+    await expect(exp.getByText('Oct 2024 – Sep 2026')).toBeVisible()
+    await expect(exp.getByRole('heading', { name: 'Junior Front-End Developer' })).toBeVisible()
+    await expect(exp.getByText('Nasr City, Cairo · Feb 2023 – Mar 2024')).toBeVisible()
+    await expect(exp.getByRole('heading', { name: 'Independent projects' })).toBeVisible()
+    await expect(exp.getByText(/Over 600 commits/)).toBeVisible()
   })
 
   test('contact links are real mailto, tel, LinkedIn and GitHub links', async ({ page }) => {

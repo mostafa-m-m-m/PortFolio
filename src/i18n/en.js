@@ -24,7 +24,7 @@ export default {
   'hero.point.tests': 'Unit, end-to-end and visual tests',
 
   'about.title': 'About',
-  'about.p1': 'I am Mostafa, a self-taught front-end developer from Egypt. I worked as a junior front-end developer in Cairo, and since then I have focused on building complete products rather than single pages.',
+  'about.p1': 'I am Mostafa, a self-taught front-end developer from Egypt. I started as a junior front-end developer in 2023, then spent two years at Vconnct building production dashboards in Next.js and TypeScript.',
   'about.p2': 'I like work where the details matter: forms that explain their errors, layouts that work in Arabic as well as English, and interfaces that stay usable with a keyboard. Every project here is tested, and the numbers are in its README.',
   'about.p3': 'I am looking for a front-end role where I can keep learning from a team and ship things people use.',
 
@@ -45,6 +45,13 @@ export default {
   'work.preview': 'Screenshot of {name}',
 
   'exp.title': 'Experience',
+  'exp.vc.role': 'Front-End Developer',
+  'exp.vc.dates': 'Oct 2024 – Sep 2026',
+  'exp.vc.b1': 'Built and maintained three production front-ends in Next.js, React and TypeScript: an admin dashboard, a visitor-facing dashboard and a shared developer kit. Over 600 commits, and the most active contributor in two of the three repositories.',
+  'exp.vc.b2': 'Admin dashboard: data tables with filtering and pagination, role-based access control in middleware, a reworked notification system, meeting and call features, and analytics pages.',
+  'exp.vc.b3': 'Visitor dashboard: registration and booking flows with localized validation and error messages, security headers and time-zone fixes.',
+  'exp.vc.b4': 'Developer kit: LTI 1.3 integration with learning platforms, organization-scoped data, and invoice and billing screens.',
+  'exp.vc.b5': 'Worked with Redux Toolkit, React Hook Form, Zod, Supabase, TanStack Query, i18next and MUI; 250+ bug-fix commits and English and Arabic localization.',
   'exp.role': 'Junior Front-End Developer',
   'exp.place': 'Nasr City, Cairo',
   'exp.dates': 'Feb 2023 – Mar 2024',
