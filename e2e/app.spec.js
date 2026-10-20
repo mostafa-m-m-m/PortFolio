@@ -51,9 +51,17 @@ test.describe('page content', () => {
     ])
   })
 
-  test('the CV button stays hidden until a CV file is configured', async ({ page }) => {
+  test('the CV button downloads a real one-page PDF', async ({ page, request }) => {
     await page.goto('/')
-    await expect(page.getByRole('link', { name: 'Download CV' })).toHaveCount(0)
+    const cv = page.getByRole('link', { name: 'Download CV' })
+    await expect(cv).toHaveAttribute('href', '/Mostafa-Mahmoud-CV.pdf')
+    await expect(cv).toHaveAttribute('download', '')
+    const res = await request.get('/Mostafa-Mahmoud-CV.pdf')
+    expect(res.status()).toBe(200)
+    expect(res.headers()['content-type']).toContain('application/pdf')
+    const body = (await res.body()).toString('latin1')
+    expect(body.startsWith('%PDF')).toBe(true)
+    expect((body.match(/\/Type\s*\/Page[^s]/g) || []).length).toBe(1)
   })
 
   test('shows the two jobs in the experience timeline, with the company link', async ({ page }) => {

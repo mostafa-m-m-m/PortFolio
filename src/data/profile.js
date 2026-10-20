@@ -7,8 +7,8 @@ export const profile = {
   linkedin: 'https://www.linkedin.com/in/mostafa-mahmoud-mohamed-260158209/',
   github: 'https://github.com/mostafa-m-m-m',
   company: { name: 'Vconnct', url: 'https://www.vconnct.me/en/home' },
-  // Put the PDF in /public and set this to '/Mostafa-Mahmoud-CV.pdf' to show the "Download CV" button.
-  cvUrl: null,
+  // Built from cv/cv.html with `npm run cv`. Set to null to hide the "Download CV" button.
+  cvUrl: '/Mostafa-Mahmoud-CV.pdf',
 }
 
 export const skills = [

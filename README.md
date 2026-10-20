@@ -27,7 +27,7 @@ All content is data: personal details in `src/data/profile.js`, projects in `src
 ## Edit it
 
 - **Contact details and links:** `src/data/profile.js`.
-- **CV button:** put the PDF in `public/` and set `cvUrl` in `profile.js`; the button stays hidden until then.
+- **CV:** edit `cv/cv.html`, then run `npm run cv` to rebuild `public/Mostafa-Mahmoud-CV.pdf` (one A4 page, plain text so applicant-tracking systems can read it). The hero button comes from `cvUrl` in `profile.js`.
 - **Add a live link to a project:** set `live` in `src/data/projects.js`.
 - **Add a project:** add an entry there and a screenshot in `src/assets/projects/` (a test checks the image exists).
 
