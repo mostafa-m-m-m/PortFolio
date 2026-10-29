@@ -33,7 +33,7 @@ async function render(out, photo) {
       style.textContent = `
         .with-photo { display: flex; justify-content: space-between; align-items: center; gap: 6mm; }
         .with-photo > div { min-width: 0; }
-        .photo { width: 27mm; height: 27mm; border-radius: 50%; object-fit: cover; flex: none; }`
+        .photo { width: 27mm; height: 27mm; border-radius: 50%; object-fit: cover; flex: none; border: 0.5mm solid #cfd5ea; }`
       document.head.append(style)
     }, pathToFileURL(photo).href)
     await page.waitForFunction(() => document.querySelector('.photo').complete)
