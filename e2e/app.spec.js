@@ -74,7 +74,7 @@ test.describe('page content', () => {
     await expect(exp.getByText('Oct 2024 – Sep 2026')).toBeVisible()
     await expect(exp.getByRole('heading', { name: 'Junior Front-End Developer' })).toBeVisible()
     await expect(exp.getByText('Nasr City, Cairo · Feb 2023 – Mar 2024')).toBeVisible()
-    await expect(exp.getByText(/600\+ commits/)).toBeVisible()
+    await expect(exp.getByText(/One of the main developers on all three/)).toBeVisible()
   })
 
   test('contact links are real mailto, tel, LinkedIn and GitHub links', async ({ page }) => {
