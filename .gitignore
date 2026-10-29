@@ -22,3 +22,7 @@ yarn-debug.log*
 yarn-error.log*
 .vercel
 .env*
+
+# CV photo version (personal photo stays local)
+/cv/photo.*
+/cv/out
